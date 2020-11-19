@@ -24,8 +24,6 @@ void UVariableManager::BeginPlay()
 void UVariableManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	
-	SetPositionX(GetPositionX() + 1);
 }
 
 float UVariableManager::GetPositionX()

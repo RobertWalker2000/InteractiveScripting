@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "Number.h"
 #include <InteractiveScripting/VariableManager.h>
+#include <InteractiveScripting/BlockManager.h>
 #include "NumVar.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -15,7 +16,10 @@ public:
 
 protected:
 	UVariableManager* varManager;
+	UBlockManager* blockManager;
+	bool FindVarManager();
 
 public:
 	float Evaluate() override;
+	void SetValue(float val);
 };
