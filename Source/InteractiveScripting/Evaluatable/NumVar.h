@@ -17,7 +17,8 @@ public:
 protected:
 	UVariableManager* varManager;
 	UBlockManager* blockManager;
-	bool FindVarManager();
+	bool HasVarType();
+	Variables varName;
 
 public:
 	float Evaluate() override;

@@ -4,35 +4,38 @@
 UNumVar::UNumVar()
 {
 	isVariable = true;
+	varName = NoValue;
 }
 
 //TODO: Create a generic system so that the variable class can be used for multiple variables, not just this one
 float UNumVar::Evaluate()
 {
-	if (FindVarManager())
-		return varManager->GetPositionX();
+	if (HasVarType())
+		return varManager->GetNumber(varName);
 	else
 		return 0;
 }
 
 void UNumVar::SetValue(float val)
 {
-	if (FindVarManager())
-		varManager->SetPositionX(val);
+	if (HasVarType())
+		varManager->SetNumber(varName, val);
 }
 
-bool UNumVar::FindVarManager()
+bool UNumVar::HasVarType()
 {
-	//If we don't have a pointer to varManager, try and get one. Otherwise, just return true
-	if (varManager == nullptr)
+
+	//If we don't have a variable type, try to get one. Otherwise return true
+	if (varName == NoValue)
 	{
 		AActor* owner = GetOwner();
 		AActor* master = owner->GetAttachParentActor();
 		blockManager = (UBlockManager*)master->GetComponentByClass(UBlockManager::StaticClass());
 		varManager = blockManager->GetVarManager();
+		varName = UVariableManager::GetVarEnum(this->GetName());
 
 		//Check to ensure we found the variable manager
-		if (varManager == nullptr)
+		if (varName == NoValue)
 			return false;
 		else 
 			return true;

@@ -4,6 +4,8 @@
 #include "Components/ActorComponent.h"
 #include "VariableManager.generated.h"
 
+static enum Variables {NoValue = 0, PositionX = 1, PositionY = 2};
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INTERACTIVESCRIPTING_API UVariableManager : public UActorComponent
 {
@@ -24,11 +26,8 @@ public:
 
 	//Variable Managers
 	//Some variables may be read only in the context of scripting, and so may only have a getter
-	float GetPositionX();
-	void SetPositionX(float newXPos);
+	float GetNumber(Variables varName);
+	void SetNumber(Variables varName, float newXPos);
 
-	float GetPositionY();
-	void SetPositionY(float newYPos);
-
-		
+	static Variables GetVarEnum(FString varName);
 };

@@ -27,6 +27,5 @@ public:
 		void SetVarManager(UVariableManager* vm);
 
 	UVariableManager* GetVarManager();
-
 		
 };

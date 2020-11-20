@@ -26,32 +26,54 @@ void UVariableManager::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
-float UVariableManager::GetPositionX()
+float UVariableManager::GetNumber(Variables varName)
 {
-	return player->GetActorTransform().GetTranslation().X;
+	switch (varName)
+	{
+	case PositionX:
+		return player->GetActorTransform().GetTranslation().X;
+	case PositionY:
+		return player->GetActorTransform().GetTranslation().Y;
+	default:
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "NumVar has no assigned variable");
+		return NULL;
+	}
 }
 
-void UVariableManager::SetPositionX(float newPosX)
+void UVariableManager::SetNumber(Variables varName, float newVal)
 {
-	FTransform playerTrans = player->GetActorTransform();
-	FVector playerPos = playerTrans.GetTranslation();
-	playerPos.X = newPosX;
-	playerTrans.SetTranslation(playerPos);
-	player->SetActorTransform(playerTrans);
+	switch (varName)
+	{
+	case PositionX:
+	{
+		FTransform playerTrans = player->GetActorTransform();
+		FVector playerPos = playerTrans.GetTranslation();
+		playerPos.X = newVal;
+		playerTrans.SetTranslation(playerPos);
+		player->SetActorTransform(playerTrans);
+		return;
+	}
+	case PositionY:
+	{
+		FTransform playerTrans = player->GetActorTransform();
+		FVector playerPos = playerTrans.GetTranslation();
+		playerPos.Y = newVal;
+		playerTrans.SetTranslation(playerPos);
+		player->SetActorTransform(playerTrans);
+		return;
+	}
+	default:
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "NumVar has no assigned variable");
+		return;
+	}
 }
 
-float UVariableManager::GetPositionY()
+Variables UVariableManager::GetVarEnum(FString varName)
 {
-	return player->GetActorTransform().GetTranslation().Y;
+	if (varName == "PositionX")
+		return PositionX;
+	else if (varName == "PositionY")
+		return PositionY;
+	else
+		return NoValue;
 }
-
-void UVariableManager::SetPositionY(float newPosY)
-{
-	FTransform playerTrans = player->GetActorTransform();
-	FVector playerPos = playerTrans.GetTranslation();
-	playerPos.Y = newPosY;
-	playerTrans.SetTranslation(playerPos);
-	player->SetActorTransform(playerTrans);
-}
-
-
