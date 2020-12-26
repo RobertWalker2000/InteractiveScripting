@@ -19,9 +19,16 @@ protected:
 	UExecutable* nextLine;
 
 public:	
+	static enum ExecuteResult
+	{
+		EndReached,
+		MissingComponent,
+		IncompatibleComponent
+	};
+
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	virtual void Execute();
+	virtual ExecuteResult Execute();
 
 	UFUNCTION(BlueprintCallable)
 		void SetNextLine(UExecutable* next);

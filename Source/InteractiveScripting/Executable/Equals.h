@@ -22,5 +22,5 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void SetRight(UEvaluatable* right);
 
-	void Execute() override;
+	ExecuteResult Execute() override;
 };

@@ -19,7 +19,12 @@ void UScriptCaller::BeginPlay()
 void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	firstLine->Execute();
+	result = firstLine->Execute();
+
+	if (result != UExecutable::ExecuteResult::EndReached)
+	{
+		//Handle Errors
+	}
 }
 
 void UScriptCaller::SetFirstLine(UExecutable* first)

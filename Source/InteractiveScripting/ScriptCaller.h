@@ -19,6 +19,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 	UExecutable* firstLine;
+	UExecutable::ExecuteResult result;
 
 public:	
 	// Called every frame

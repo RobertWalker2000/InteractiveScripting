@@ -21,12 +21,12 @@ void UExecutable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 }
 
-void UExecutable::Execute()
+UExecutable::ExecuteResult UExecutable::Execute()
 {
 	if (nextLine == nullptr)
-		return;
+		return EndReached;	//There was no next line, return 0 to indicate succesful execution until the end was reached
 	else
-		nextLine->Execute();
+		return nextLine->Execute();
 }
 
 void UExecutable::SetNextLine(UExecutable* next)

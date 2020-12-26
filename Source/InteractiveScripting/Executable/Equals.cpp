@@ -18,13 +18,14 @@ void UEquals::SetRight(UEvaluatable* right)
 	rightSide = right;
 }
 
-void UEquals::Execute()
+UExecutable::ExecuteResult UEquals::Execute()
 {
 	//If the data types are not the same, we can not execute this operation
 	//Therefore, we return and end the sequence
-	if (leftSide->GetDataType() != rightSide->GetDataType()
-		|| leftSide == nullptr || rightSide == nullptr)
-		return;
+	if (leftSide->GetDataType() != rightSide->GetDataType())
+		return IncompatibleComponent;
+	else if(leftSide == nullptr || rightSide == nullptr)
+		return MissingComponent;
 
 	//Check the data type so we know how to cast the values
 	if (leftSide->GetDataType() == DataType::NUMBER)
@@ -35,7 +36,7 @@ void UEquals::Execute()
 	}
 
 	if (nextLine == nullptr)
-		return;
+		return EndReached;
 	else
-		nextLine->Execute();
+		return nextLine->Execute();
 }
