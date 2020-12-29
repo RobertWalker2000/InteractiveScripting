@@ -17,6 +17,7 @@ void UVariableManager::BeginPlay()
 {
 	Super::BeginPlay();
 	player = GetOwner();
+	controller = GetWorld()->GetFirstPlayerController();
 }
 
 
@@ -24,6 +25,7 @@ void UVariableManager::BeginPlay()
 void UVariableManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	GetKeyPressed();
 }
 
 float UVariableManager::GetNumber(Variables varName)
@@ -76,4 +78,25 @@ Variables UVariableManager::GetVarEnum(FString varName)
 		return PositionY;
 	else
 		return NoValue;
+}
+
+bool UVariableManager::GetKeyPressed()
+{
+	FKey key;
+	key = "E";
+
+	if(controller)
+	{
+		if (controller->IsInputKeyDown(key))
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "A pressed");
+		}
+
+		return controller->IsInputKeyDown(key);
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Controller is NULL");
+		return false;
+	}
 }
