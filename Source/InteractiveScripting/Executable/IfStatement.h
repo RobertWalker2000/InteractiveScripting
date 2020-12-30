@@ -20,4 +20,10 @@ protected:
 
 public:
 	ExecuteResult Execute() override;
+
+	UFUNCTION(BlueprintCallable)
+		void SetCondition(UBoolean* cond);
+
+	UFUNCTION(BlueprintCallable)
+		void SetInsideLine(UExecutable* inLine);
 };

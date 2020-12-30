@@ -23,7 +23,7 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 	if (result != UExecutable::ExecuteResult::EndReached)
 	{
-		//Handle Errors
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "An error occured during execution");
 	}
 }
 

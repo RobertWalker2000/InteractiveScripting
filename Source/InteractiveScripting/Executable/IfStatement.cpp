@@ -30,3 +30,13 @@ UExecutable::ExecuteResult UIfStatement::Execute()
 	}
 
 }
+
+void UIfStatement::SetCondition(UBoolean* cond)
+{
+	condition = cond;
+}
+
+void UIfStatement::SetInsideLine(UExecutable* inLine)
+{
+	insideLine = inLine;
+}

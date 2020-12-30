@@ -20,7 +20,6 @@ protected:
 	virtual void BeginPlay() override;
 
 	AActor* player;
-	APlayerController* controller;
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -29,8 +28,6 @@ public:
 	//Some variables may be read only in the context of scripting, and so may only have a getter
 	float GetNumber(Variables varName);
 	void SetNumber(Variables varName, float newXPos);
-
-	bool GetKeyPressed();
 
 	static Variables GetVarEnum(FString varName);
 };

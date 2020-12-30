@@ -10,10 +10,14 @@ class INTERACTIVESCRIPTING_API UKeyPressed : public UBoolean
 	GENERATED_BODY()
 	
 public:
+	UKeyPressed();
 
 protected:
-	void GetKey();
+	APlayerController* controller;
+	FKey key;
 
+	bool GetKey();
+	bool GetController();
 public:
 	bool Evaluate() override;
 };
