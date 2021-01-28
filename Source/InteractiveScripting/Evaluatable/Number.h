@@ -5,12 +5,12 @@
 #include "Number.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UNumber : public UEvaluatable
+class INTERACTIVESCRIPTING_API ANumber : public AEvaluatable
 {
 	GENERATED_BODY()
 
 public:
-	UNumber();
+	ANumber();
 
 protected:
 

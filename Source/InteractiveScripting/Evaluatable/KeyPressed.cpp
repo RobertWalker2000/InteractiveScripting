@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "KeyPressed.h"
 
-UKeyPressed::UKeyPressed()
+AKeyPressed::AKeyPressed()
 {
 
 }
 
-bool UKeyPressed::GetController()
+bool AKeyPressed::GetController()
 {
 	//Dont need to find the controller if we already have it
 	if (controller)
@@ -22,7 +22,7 @@ bool UKeyPressed::GetController()
 		return false;
 }
 
-bool UKeyPressed::GetKey()
+bool AKeyPressed::GetKey()
 {
 	//Get the relavent key from the component name
 	FString keyString = this->GetName();
@@ -32,7 +32,7 @@ bool UKeyPressed::GetKey()
 	return key.IsValid();
 }
 
-bool UKeyPressed::Evaluate()
+bool AKeyPressed::Evaluate()
 {
 	if (GetController())	//Ensure we have a valid controller
 	{

@@ -14,7 +14,7 @@ public:
 	AIfStatement();
 
 protected:
-	UBoolean* condition;
+	ABoolean* condition;
 
 	AExecutable* insideLine;
 
@@ -22,7 +22,7 @@ public:
 	ExecuteResult Execute() override;
 
 	UFUNCTION(BlueprintCallable)
-		void SetCondition(UBoolean* cond);
+		void SetCondition(ABoolean* cond);
 
 	UFUNCTION(BlueprintCallable)
 		void SetInsideLine(AExecutable* inLine);

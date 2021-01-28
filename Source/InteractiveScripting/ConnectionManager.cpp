@@ -74,7 +74,7 @@ void AConnectionManager::TryExecutableConnection()
 	}
 }
 
-void AConnectionManager::AssignNumVal(UNumber* numValueIn)
+void AConnectionManager::AssignNumVal(ANumber* numValueIn)
 {
 	ClearValues();
 	numValue = numValueIn;
@@ -82,7 +82,7 @@ void AConnectionManager::AssignNumVal(UNumber* numValueIn)
 	TryNumConnection();
 }
 
-void AConnectionManager::AssignNumVarVal(UNumVar* numVarValueIn)
+void AConnectionManager::AssignNumVarVal(ANumVar* numVarValueIn)
 {
 	ClearValues();
 	numVarValue = numVarValueIn;
@@ -90,7 +90,7 @@ void AConnectionManager::AssignNumVarVal(UNumVar* numVarValueIn)
 	TryNumConnection();
 }
 
-void AConnectionManager::AssignNumSlot(UNumber** numSlotIn)
+void AConnectionManager::AssignNumSlot(ANumber** numSlotIn)
 {
 	ClearSlots();
 	numSlot = numSlotIn;
@@ -98,7 +98,7 @@ void AConnectionManager::AssignNumSlot(UNumber** numSlotIn)
 	TryNumConnection();
 }
 
-void AConnectionManager::AssignNumVarSlot(UNumVar** numVarSlotIn)
+void AConnectionManager::AssignNumVarSlot(ANumVar** numVarSlotIn)
 {
 	ClearSlots();
 	numVarSlot = numVarSlotIn;
@@ -129,7 +129,7 @@ void AConnectionManager::TryNumConnection()
 	}
 }
 
-void AConnectionManager::AssignBooleanVal(UBoolean* boolValueIn)
+void AConnectionManager::AssignBooleanVal(ABoolean* boolValueIn)
 {
 	ClearValues();
 	boolValue = boolValueIn;
@@ -137,7 +137,7 @@ void AConnectionManager::AssignBooleanVal(UBoolean* boolValueIn)
 	TryBoolConnection();
 }
 
-void AConnectionManager::AssignBooleanSlot(UBoolean** boolSlotIn)
+void AConnectionManager::AssignBooleanSlot(ABoolean** boolSlotIn)
 {
 	ClearSlots();
 	boolSlot = boolSlotIn;

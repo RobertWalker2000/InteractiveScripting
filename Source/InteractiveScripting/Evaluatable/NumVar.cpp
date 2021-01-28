@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "NumVar.h"
 
-UNumVar::UNumVar()
+ANumVar::ANumVar()
 {
 	isVariable = true;
 	varName = NoValue;
 }
 
 //TODO: Create a generic system so that the variable class can be used for multiple variables, not just this one
-float UNumVar::Evaluate()
+float ANumVar::Evaluate()
 {
 	if (HasVarType())
 		return varManager->GetNumber(varName);
@@ -16,13 +16,13 @@ float UNumVar::Evaluate()
 		return 0;
 }
 
-void UNumVar::SetValue(float val)
+void ANumVar::SetValue(float val)
 {
 	if (HasVarType())
 		varManager->SetNumber(varName, val);
 }
 
-bool UNumVar::HasVarType()
+bool ANumVar::HasVarType()
 {
 
 	//If we don't have a variable type, try to get one. Otherwise return true

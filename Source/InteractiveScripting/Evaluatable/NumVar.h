@@ -7,12 +7,12 @@
 #include "NumVar.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UNumVar : public UNumber
+class INTERACTIVESCRIPTING_API ANumVar : public ANumber
 {
 	GENERATED_BODY()
 
 public:
-	UNumVar();
+	ANumVar();
 
 protected:
 	UVariableManager* varManager;

@@ -31,7 +31,7 @@ AExecutable::ExecuteResult AIfStatement::Execute()
 
 }
 
-void AIfStatement::SetCondition(UBoolean* cond)
+void AIfStatement::SetCondition(ABoolean* cond)
 {
 	condition = cond;
 }

@@ -29,18 +29,18 @@ protected:
 	//Input Values
 	AExecutable* exeValue;
 
-	UNumber* numValue;
-	UNumVar* numVarValue;
+	ANumber* numValue;
+	ANumVar* numVarValue;
 
-	UBoolean* boolValue;
+	ABoolean* boolValue;
 
 	//Input Slots
 	AExecutable** exeSlot;
 
-	UNumber** numSlot;
-	UNumVar** numVarSlot;
+	ANumber** numSlot;
+	ANumVar** numVarSlot;
 
-	UBoolean** boolSlot;
+	ABoolean** boolSlot;
 
 public:	
 
@@ -55,17 +55,17 @@ public:
 	void TryExecutableConnection();
 
 	//Number connections
-	void AssignNumVal(UNumber* numValueIn);
-	void AssignNumVarVal(UNumVar* numVarValIn);
+	void AssignNumVal(ANumber* numValueIn);
+	void AssignNumVarVal(ANumVar* numVarValIn);
 
-	void AssignNumSlot(UNumber** numSlotIn);
-	void AssignNumVarSlot(UNumVar** numVarSlotIn);
+	void AssignNumSlot(ANumber** numSlotIn);
+	void AssignNumVarSlot(ANumVar** numVarSlotIn);
 
 	void TryNumConnection();
 
 	//Boolean connections
-	void AssignBooleanVal(UBoolean* boolValueIn);
-	void AssignBooleanSlot(UBoolean** boolSlotIn);
+	void AssignBooleanVal(ABoolean* boolValueIn);
+	void AssignBooleanSlot(ABoolean** boolSlotIn);
 
 	void TryBoolConnection();
 

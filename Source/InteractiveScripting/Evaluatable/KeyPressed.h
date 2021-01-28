@@ -5,12 +5,12 @@
 #include "KeyPressed.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UKeyPressed : public UBoolean
+class INTERACTIVESCRIPTING_API AKeyPressed : public ABoolean
 {
 	GENERATED_BODY()
 	
 public:
-	UKeyPressed();
+	AKeyPressed();
 
 protected:
 	APlayerController* controller;

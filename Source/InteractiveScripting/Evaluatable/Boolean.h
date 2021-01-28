@@ -6,12 +6,12 @@
 
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UBoolean : public UEvaluatable
+class INTERACTIVESCRIPTING_API ABoolean : public AEvaluatable
 {
 	GENERATED_BODY()
 	
 public:
-	UBoolean();
+	ABoolean();
 
 	virtual bool Evaluate() { return NULL; };
 };

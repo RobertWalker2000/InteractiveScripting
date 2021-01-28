@@ -14,13 +14,13 @@ public:
 	AEquals();
 
 protected:
-	UEvaluatable* leftSide;
-	UEvaluatable* rightSide;
+	AEvaluatable* leftSide;
+	AEvaluatable* rightSide;
 public:
 	UFUNCTION(BlueprintCallable)
-		void SetLeft(UEvaluatable* left);
+		void SetLeft(AEvaluatable* left);
 	UFUNCTION(BlueprintCallable)
-		void SetRight(UEvaluatable* right);
+		void SetRight(AEvaluatable* right);
 
 	ExecuteResult Execute() override;
 };

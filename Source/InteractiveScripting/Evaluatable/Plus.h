@@ -5,22 +5,22 @@
 #include "Plus.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UPlus : public UNumber
+class INTERACTIVESCRIPTING_API APlus : public ANumber
 {
 	GENERATED_BODY()
 
 public:
-	UPlus();
+	APlus();
 
 protected:
-	UNumber* leftSide;
-	UNumber* rightSide;
+	ANumber* leftSide;
+	ANumber* rightSide;
 
 public:
 	float Evaluate() override;
 
 	UFUNCTION(BlueprintCallable)
-		void SetLeft(UNumber* left);
+		void SetLeft(ANumber* left);
 	UFUNCTION(BlueprintCallable)
-		void SetRight(UNumber* right);
+		void SetRight(ANumber* right);
 };

@@ -2,30 +2,24 @@
 #include "Evaluatable.h"
 
 // Sets default values for this component's properties
-UEvaluatable::UEvaluatable()
+AEvaluatable::AEvaluatable()
 {
-	//Doesn't need to tick
-	PrimaryComponentTick.bCanEverTick = false;
+	//Set this actor to never tick to imrpove performance
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 // Called when the game starts
-void UEvaluatable::BeginPlay()
+void AEvaluatable::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-// Called every frame
-void UEvaluatable::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-}
-
-DataType UEvaluatable::GetDataType()
+DataType AEvaluatable::GetDataType()
 {
 	return dataType;
 }
 
-bool UEvaluatable::IsVariable()
+bool AEvaluatable::IsVariable()
 {
 	return isVariable;
 }
