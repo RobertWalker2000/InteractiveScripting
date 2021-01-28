@@ -6,12 +6,12 @@
 #include "Equals.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UEquals : public UExecutable
+class INTERACTIVESCRIPTING_API AEquals : public AExecutable
 {
 	GENERATED_BODY()
 	
 public:
-	UEquals();
+	AEquals();
 
 protected:
 	UEvaluatable* leftSide;

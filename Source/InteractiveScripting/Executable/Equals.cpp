@@ -1,24 +1,24 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Equals.h"
 
-UEquals::UEquals()
+AEquals::AEquals()
 {
 
 }
 
-void UEquals::SetLeft(UEvaluatable* left)
+void AEquals::SetLeft(UEvaluatable* left)
 {
 	//Only set the left side if it is a variable, as it needs to have a set function
 	if(left->IsVariable())
 		leftSide = left;
 }
 
-void UEquals::SetRight(UEvaluatable* right)
+void AEquals::SetRight(UEvaluatable* right)
 {
 	rightSide = right;
 }
 
-UExecutable::ExecuteResult UEquals::Execute()
+AExecutable::ExecuteResult AEquals::Execute()
 {
 	//If the data types are not the same, we can not execute this operation
 	//Therefore, we return and end the sequence

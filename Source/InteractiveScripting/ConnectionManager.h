@@ -27,7 +27,7 @@ protected:
 	void HandleImproperPair();
 
 	//Input Values
-	UExecutable* exeValue;
+	AExecutable* exeValue;
 
 	UNumber* numValue;
 	UNumVar* numVarValue;
@@ -35,7 +35,7 @@ protected:
 	UBoolean* boolValue;
 
 	//Input Slots
-	UExecutable** exeSlot;
+	AExecutable** exeSlot;
 
 	UNumber** numSlot;
 	UNumVar** numVarSlot;
@@ -49,8 +49,8 @@ public:
 	void ClearSlots();
 
 	//Executable connections
-	void AssignExecutableValue(UExecutable* exeVal);
-	void AssignExecutableSlot(UExecutable** exeSlotIn);
+	void AssignExecutableValue(AExecutable* exeVal);
+	void AssignExecutableSlot(AExecutable** exeSlotIn);
 
 	void TryExecutableConnection();
 

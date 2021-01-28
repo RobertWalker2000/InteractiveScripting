@@ -5,18 +5,18 @@
 #include "Executable.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class INTERACTIVESCRIPTING_API UExecutable : public UActorComponent
+class INTERACTIVESCRIPTING_API AExecutable : public AActor
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UExecutable();
+	AExecutable();
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	UExecutable* nextLine;
+	AExecutable* nextLine;
 
 public:	
 	static enum ExecuteResult
@@ -26,11 +26,9 @@ public:
 		IncompatibleComponent
 	};
 
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	virtual ExecuteResult Execute();
 
 	UFUNCTION(BlueprintCallable)
-		void SetNextLine(UExecutable* next);
+		void SetNextLine(AExecutable* next);
 		
 };

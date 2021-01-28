@@ -21,13 +21,13 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 	result = firstLine->Execute();
 
-	if (result != UExecutable::ExecuteResult::EndReached)
+	if (result != AExecutable::ExecuteResult::EndReached)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "An error occured during execution");
 	}
 }
 
-void UScriptCaller::SetFirstLine(UExecutable* first)
+void UScriptCaller::SetFirstLine(AExecutable* first)
 {
 	firstLine = first;
 }

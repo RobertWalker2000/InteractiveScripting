@@ -3,7 +3,7 @@
 // Sets default values
 AConnectionManager::AConnectionManager()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//Set this actor to never tick to imrpove performance
 	PrimaryActorTick.bCanEverTick = false;
 
 }
@@ -39,7 +39,7 @@ void AConnectionManager::ClearSlots()
 	boolSlot = nullptr;
 }
 
-void AConnectionManager::AssignExecutableValue(UExecutable* exeValueIn)
+void AConnectionManager::AssignExecutableValue(AExecutable* exeValueIn)
 {
 	ClearValues();
 	exeValue = exeValueIn;
@@ -47,7 +47,7 @@ void AConnectionManager::AssignExecutableValue(UExecutable* exeValueIn)
 	TryExecutableConnection();
 }
 
-void AConnectionManager::AssignExecutableSlot(UExecutable** exeSlotIn)
+void AConnectionManager::AssignExecutableSlot(AExecutable** exeSlotIn)
 {
 	ClearSlots();
 	exeSlot = exeSlotIn;

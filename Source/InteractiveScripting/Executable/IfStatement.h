@@ -6,17 +6,17 @@
 #include "IfStatement.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API UIfStatement : public UExecutable
+class INTERACTIVESCRIPTING_API AIfStatement : public AExecutable
 {
 	GENERATED_BODY()
 	
 public:
-	UIfStatement();
+	AIfStatement();
 
 protected:
 	UBoolean* condition;
 
-	UExecutable* insideLine;
+	AExecutable* insideLine;
 
 public:
 	ExecuteResult Execute() override;
@@ -25,5 +25,5 @@ public:
 		void SetCondition(UBoolean* cond);
 
 	UFUNCTION(BlueprintCallable)
-		void SetInsideLine(UExecutable* inLine);
+		void SetInsideLine(AExecutable* inLine);
 };

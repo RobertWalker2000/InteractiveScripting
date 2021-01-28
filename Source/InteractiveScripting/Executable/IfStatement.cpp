@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "IfStatement.h"
 
-UIfStatement::UIfStatement()
+AIfStatement::AIfStatement()
 {
 
 }
 
-UExecutable::ExecuteResult UIfStatement::Execute()
+AExecutable::ExecuteResult AIfStatement::Execute()
 {
-	UExecutable::ExecuteResult insideResult = EndReached;
+	AExecutable::ExecuteResult insideResult = EndReached;
 
 	//Check the condition and execute the conditional code only if it returns true
 	if (condition->Evaluate() == true && insideLine != NULL)
@@ -31,12 +31,12 @@ UExecutable::ExecuteResult UIfStatement::Execute()
 
 }
 
-void UIfStatement::SetCondition(UBoolean* cond)
+void AIfStatement::SetCondition(UBoolean* cond)
 {
 	condition = cond;
 }
 
-void UIfStatement::SetInsideLine(UExecutable* inLine)
+void AIfStatement::SetInsideLine(AExecutable* inLine)
 {
 	insideLine = inLine;
 }
