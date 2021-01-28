@@ -3,31 +3,26 @@
 #include <Kismet/GameplayStatics.h>
 
 // Sets default values for this component's properties
-UBlockManager::UBlockManager()
+ABlockManager::ABlockManager()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = false;
+	//Set this actor to never tick to imrpove performance
+	PrimaryActorTick.bCanEverTick = false;
+
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 }
 
 // Called when the game starts
-void UBlockManager::BeginPlay()
+void ABlockManager::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-// Called every frame
-void UBlockManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-}
-
-void UBlockManager::SetVarManager(UVariableManager* vm)
+void ABlockManager::SetVarManager(UVariableManager* vm)
 {
 	varManager = vm;
 }
 
-UVariableManager* UBlockManager::GetVarManager()
+UVariableManager* ABlockManager::GetVarManager()
 {
 	return varManager;
 }

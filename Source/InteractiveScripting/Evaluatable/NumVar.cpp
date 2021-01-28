@@ -7,7 +7,6 @@ ANumVar::ANumVar()
 	varName = NoValue;
 }
 
-//TODO: Create a generic system so that the variable class can be used for multiple variables, not just this one
 float ANumVar::Evaluate()
 {
 	if (HasVarType())
@@ -24,21 +23,24 @@ void ANumVar::SetValue(float val)
 
 bool ANumVar::HasVarType()
 {
-
 	//If we don't have a variable type, try to get one. Otherwise return true
 	if (varName == NoValue)
 	{
-		AActor* owner = GetOwner();
-		AActor* master = owner->GetAttachParentActor();
-		blockManager = (UBlockManager*)master->GetComponentByClass(UBlockManager::StaticClass());
-		varManager = blockManager->GetVarManager();
-		varName = UVariableManager::GetVarEnum(this->GetName());
+		AActor* owner = GetAttachParentActor();
+		if (owner->IsA<ABlockManager>())
+		{
+			blockManager = (ABlockManager*)owner;
+			varManager = blockManager->GetVarManager();
+			varName = UVariableManager::GetVarEnum(this->GetName());
 
-		//Check to ensure we found the variable manager
-		if (varName == NoValue)
-			return false;
-		else 
-			return true;
+			//Check to ensure we found the variable manager
+			if (varName == NoValue)
+				return false;
+			else
+				return true;
+		}
+		else
+			return false;	//If the owner is not a block manager,we can't proceed
 	}
 	else
 		return true;

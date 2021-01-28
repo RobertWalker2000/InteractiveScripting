@@ -6,6 +6,8 @@ AExecutable::AExecutable()
 {
 	//Set this actor to never tick to imrpove performance
 	PrimaryActorTick.bCanEverTick = false;
+
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 }
 
 // Called when the game starts
