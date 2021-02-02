@@ -49,22 +49,28 @@ public:
 	void ClearSlots();
 
 	//Executable connections
-	void AssignExecutableValue(AExecutable* exeVal);
+	UFUNCTION(BlueprintCallable)
+		void AssignExecutableValue(AExecutable* exeVal);
+
+	//May need to make the input variable const to expose to blueprints
 	void AssignExecutableSlot(AExecutable** exeSlotIn);
 
 	void TryExecutableConnection();
 
 	//Number connections
 	void AssignNumVal(ANumber* numValueIn);
+
 	void AssignNumVarVal(ANumVar* numVarValIn);
 
 	void AssignNumSlot(ANumber** numSlotIn);
+
 	void AssignNumVarSlot(ANumVar** numVarSlotIn);
 
 	void TryNumConnection();
 
 	//Boolean connections
 	void AssignBooleanVal(ABoolean* boolValueIn);
+
 	void AssignBooleanSlot(ABoolean** boolSlotIn);
 
 	void TryBoolConnection();
