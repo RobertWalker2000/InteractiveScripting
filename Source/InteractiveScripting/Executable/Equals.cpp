@@ -28,12 +28,11 @@ void AEquals::SetRightSideAsSlot(AConnectionManager* connectionManager)
 
 AExecutable::ExecuteResult AEquals::Execute()
 {
-	//If the data types are not the same, we can not execute this operation
-	//Therefore, we return and end the sequence
-	if (leftSide->GetDataType() != rightSide->GetDataType())
-		return IncompatibleComponent;
-	else if(leftSide == nullptr || rightSide == nullptr)
+	//Check that everything is assigned
+	if (leftSide == nullptr || rightSide == nullptr)
 		return MissingComponent;
+	else if (leftSide->GetDataType() != rightSide->GetDataType())
+		return IncompatibleComponent;
 
 	//Check the data type so we know how to cast the values
 	if (leftSide->GetDataType() == DataType::NUMBER)

@@ -27,21 +27,11 @@ void AKeyPressed::SetKey(FString text)
 	key = StringCast<ANSICHAR>(*text).Get();
 }
 
-bool AKeyPressed::GetKey()
-{
-	//Get the relavent key from the component name
-	FString keyString = this->GetName();
-
-	//Set the key using the string, which must be cast to the appropriate type
-	key = StringCast<ANSICHAR>(*keyString).Get();
-	return key.IsValid();
-}
-
 bool AKeyPressed::Evaluate()
 {
 	if (GetController())	//Ensure we have a valid controller
 	{
-		if (GetKey())	//Ensure we have a valid key
+		if (key.IsValid())	//Ensure we have a valid key
 		{
 			return controller->IsInputKeyDown(key);
 		}

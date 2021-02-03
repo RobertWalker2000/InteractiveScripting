@@ -2,7 +2,6 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Evaluatable.h"
-#include <InteractiveScripting/ConnectionManager.h>
 #include "Number.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))

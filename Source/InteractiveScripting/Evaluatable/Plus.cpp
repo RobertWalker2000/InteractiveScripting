@@ -30,6 +30,9 @@ float APlus::Evaluate()
 {
 	//TODO: Ensure function adds left and right rather than a constant 10
 	//This will require more variables to be in use first
+	if (leftSide == nullptr)
+		return NULL;
+
 	float value;
 	value = leftSide->Evaluate() + 10.0f;
 	return value;

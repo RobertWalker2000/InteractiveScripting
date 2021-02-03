@@ -60,7 +60,7 @@ public:
 	//Number connections
 	void AssignNumVal(ANumber* numValueIn);
 
-	void AssignNumVarVal(ANumVar* numVarValIn);
+	void AssignNumVarVal(ANumber* numValIn, ANumVar* numVarValIn);
 
 	void AssignNumSlot(ANumber** numSlotIn);
 

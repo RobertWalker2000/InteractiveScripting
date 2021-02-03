@@ -2,6 +2,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include <InteractiveScripting/ConnectionManager.h>
 #include "Evaluatable.generated.h"
 
 //Describes what kind of data the evaluatable returns

@@ -26,7 +26,8 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 		if (result != AExecutable::ExecuteResult::EndReached)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "An error occured during execution");
+			if(result == AExecutable::ExecuteResult::MissingComponent)
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Missing a component");
 		}
 	}
 }

@@ -8,6 +8,9 @@ AIfStatement::AIfStatement()
 
 AExecutable::ExecuteResult AIfStatement::Execute()
 {
+	if (condition == nullptr)
+		return MissingComponent;
+
 	AExecutable::ExecuteResult insideResult = EndReached;
 
 	//Check the condition and execute the conditional code only if it returns true

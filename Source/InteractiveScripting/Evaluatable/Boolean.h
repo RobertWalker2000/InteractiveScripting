@@ -14,4 +14,7 @@ public:
 	ABoolean();
 
 	virtual bool Evaluate() { return NULL; };
+
+	UFUNCTION(BlueprintCallable)
+		void SetAsBooleanValue(AConnectionManager* connectionManager);
 };

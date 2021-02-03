@@ -12,7 +12,7 @@ float ANumVar::Evaluate()
 	if (HasVarType())
 		return varManager->GetNumber(varName);
 	else
-		return 0;
+		return NULL;
 }
 
 void ANumVar::SetValue(float val)
@@ -53,5 +53,5 @@ bool ANumVar::HasVarType()
 
 void ANumVar::SetAsNumVarValue(AConnectionManager* connectionManager)
 {
-	connectionManager->AssignNumVarVal(this);
+	connectionManager->AssignNumVarVal(this, this);
 }
