@@ -14,13 +14,24 @@ public:
 	AEquals();
 
 protected:
-	AEvaluatable* leftSide;
-	AEvaluatable* rightSide;
+	ANumVar* leftSide;
+	ANumber* rightSide;
+
 public:
+	//Should be removed after UI linking
 	UFUNCTION(BlueprintCallable)
-		void SetLeft(AEvaluatable* left);
+		void SetLeft(ANumVar* left);
+	//Remove after UI linking
 	UFUNCTION(BlueprintCallable)
-		void SetRight(AEvaluatable* right);
+		void SetRight(ANumber* right);
+
+	UFUNCTION(BlueprintCallable)
+		void SetLeftSideAsSlot(AConnectionManager* connectionManager);
+
+	UFUNCTION(BlueprintCallable)
+		void SetRightSideAsSlot(AConnectionManager* connectionManager);
+
+
 
 	ExecuteResult Execute() override;
 };

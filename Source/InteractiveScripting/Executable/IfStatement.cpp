@@ -40,3 +40,13 @@ void AIfStatement::SetInsideLine(AExecutable* inLine)
 {
 	insideLine = inLine;
 }
+
+void AIfStatement::SetConditionAsSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignBooleanSlot(&condition);
+}
+
+void AIfStatement::SetInsideLineAsSLot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignExecutableSlot(&insideLine);
+}

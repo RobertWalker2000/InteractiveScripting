@@ -6,16 +6,24 @@ AEquals::AEquals()
 
 }
 
-void AEquals::SetLeft(AEvaluatable* left)
+void AEquals::SetLeft(ANumVar* left)
 {
-	//Only set the left side if it is a variable, as it needs to have a set function
-	if(left->IsVariable())
-		leftSide = left;
+	leftSide = left;
 }
 
-void AEquals::SetRight(AEvaluatable* right)
+void AEquals::SetRight(ANumber* right)
 {
 	rightSide = right;
+}
+
+void AEquals::SetLeftSideAsSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignNumVarSlot(&leftSide);
+}
+
+void AEquals::SetRightSideAsSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignNumSlot(&rightSide);
 }
 
 AExecutable::ExecuteResult AEquals::Execute()

@@ -30,6 +30,7 @@ public:
 
 	virtual ExecuteResult Execute();
 
+	//Used for old blueprint setting, should be deletable when UI linking is implemented
 	UFUNCTION(BlueprintCallable)
 		void SetNextLine(AExecutable* next);
 		
