@@ -19,11 +19,15 @@ void UScriptCaller::BeginPlay()
 void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	result = firstLine->Execute();
 
-	if (result != AExecutable::ExecuteResult::EndReached)
+	if (firstLine != nullptr)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "An error occured during execution");
+		result = firstLine->Execute();
+
+		if (result != AExecutable::ExecuteResult::EndReached)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "An error occured during execution");
+		}
 	}
 }
 
