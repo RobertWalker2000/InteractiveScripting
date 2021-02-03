@@ -21,6 +21,11 @@ void ANumVar::SetValue(float val)
 		varManager->SetNumber(varName, val);
 }
 
+void ANumVar::SetVariableName(FString nameIn)
+{
+	nameString = nameIn;
+}
+
 bool ANumVar::HasVarType()
 {
 	//If we don't have a variable type, try to get one. Otherwise return true
@@ -31,7 +36,7 @@ bool ANumVar::HasVarType()
 		{
 			blockManager = (ABlockManager*)owner;
 			varManager = blockManager->GetVarManager();
-			varName = UVariableManager::GetVarEnum(this->GetName());
+			varName = UVariableManager::GetVarEnum(nameString);
 
 			//Check to ensure we found the variable manager
 			if (varName == NoValue)

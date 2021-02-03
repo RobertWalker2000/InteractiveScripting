@@ -19,6 +19,7 @@ protected:
 	ABlockManager* blockManager;
 	bool HasVarType();
 	Variables varName;
+	FString nameString;
 
 public:
 	float Evaluate() override;
@@ -26,4 +27,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		void SetAsNumVarValue(AConnectionManager* connectionManager);
+
+	UFUNCTION(BlueprintCallable)
+		void SetVariableName(FString nameIn);
 };
