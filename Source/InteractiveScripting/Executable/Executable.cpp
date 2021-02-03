@@ -28,3 +28,13 @@ void AExecutable::SetNextLine(AExecutable* next)
 {
 	nextLine = next;
 }
+
+void AExecutable::SetAsExeValue(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignExecutableValue(this);
+}
+
+void AExecutable::SetAsExeSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignExecutableSlot(&nextLine);
+}

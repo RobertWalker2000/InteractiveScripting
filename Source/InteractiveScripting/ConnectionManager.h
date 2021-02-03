@@ -1,11 +1,13 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Executable/Executable.h"
-#include "Evaluatable/NumVar.h"
-#include "Evaluatable/Boolean.h"
 #include "ConnectionManager.generated.h"
 
+//Forward Declarations
+class AExecutable;
+class ANumber;
+class ANumVar;
+class ABoolean;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INTERACTIVESCRIPTING_API AConnectionManager : public AActor
@@ -49,10 +51,8 @@ public:
 	void ClearSlots();
 
 	//Executable connections
-	UFUNCTION(BlueprintCallable)
-		void AssignExecutableValue(AExecutable* exeVal);
+	void AssignExecutableValue(AExecutable* exeVal);
 
-	//May need to make the input variable const to expose to blueprints
 	void AssignExecutableSlot(AExecutable** exeSlotIn);
 
 	void TryExecutableConnection();

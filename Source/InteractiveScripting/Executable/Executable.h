@@ -2,6 +2,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include <InteractiveScripting/ConnectionManager.h>
 #include "Executable.generated.h"
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -18,6 +19,7 @@ protected:
 	virtual void BeginPlay() override;
 	AExecutable* nextLine;
 
+
 public:	
 	static enum ExecuteResult
 	{
@@ -31,4 +33,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void SetNextLine(AExecutable* next);
 		
+	UFUNCTION(BlueprintCallable)
+		void SetAsExeValue(AConnectionManager* connectionManager);
+
+	UFUNCTION(BlueprintCallable)
+		void SetAsExeSlot(AConnectionManager* connectionManager);
 };
