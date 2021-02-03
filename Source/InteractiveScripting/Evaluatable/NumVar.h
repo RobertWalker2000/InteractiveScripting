@@ -23,4 +23,7 @@ protected:
 public:
 	float Evaluate() override;
 	void SetValue(float val);
+
+	UFUNCTION(BlueprintCallable)
+		void SetAsNumVarValue(AConnectionManager* connectionManager);
 };

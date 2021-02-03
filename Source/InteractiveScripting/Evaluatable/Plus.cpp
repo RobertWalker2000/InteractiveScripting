@@ -16,6 +16,16 @@ void APlus::SetRight(ANumber* right)
 	rightSide = right;
 }
 
+void APlus::SetLeftSideAsSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignNumSlot(&leftSide);
+}
+
+void APlus::SetRightSideAsSlot(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignNumSlot(&rightSide);
+}
+
 float APlus::Evaluate()
 {
 	//TODO: Ensure function adds left and right rather than a constant 10

@@ -23,4 +23,10 @@ public:
 		void SetLeft(ANumber* left);
 	UFUNCTION(BlueprintCallable)
 		void SetRight(ANumber* right);
+
+	UFUNCTION(BlueprintCallable)
+		void SetLeftSideAsSlot(AConnectionManager* connectionManager);
+
+	UFUNCTION(BlueprintCallable)
+		void SetRightSideAsSlot(AConnectionManager* connectionManager);
 };

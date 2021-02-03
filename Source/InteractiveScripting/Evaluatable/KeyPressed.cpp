@@ -22,6 +22,11 @@ bool AKeyPressed::GetController()
 		return false;
 }
 
+void AKeyPressed::SetKey(FString text)
+{
+	key = StringCast<ANSICHAR>(*text).Get();
+}
+
 bool AKeyPressed::GetKey()
 {
 	//Get the relavent key from the component name

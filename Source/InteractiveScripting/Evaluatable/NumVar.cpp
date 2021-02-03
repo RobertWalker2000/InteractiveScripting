@@ -45,3 +45,8 @@ bool ANumVar::HasVarType()
 	else
 		return true;
 }
+
+void ANumVar::SetAsNumVarValue(AConnectionManager* connectionManager)
+{
+	connectionManager->AssignNumVarVal(this);
+}

@@ -16,8 +16,13 @@ protected:
 	APlayerController* controller;
 	FKey key;
 
+	//Should be removable after UI linking
 	bool GetKey();
+
 	bool GetController();
 public:
 	bool Evaluate() override;
+
+	UFUNCTION(BlueprintCallable)
+		void SetKey(FString textIn);
 };

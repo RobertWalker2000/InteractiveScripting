@@ -2,6 +2,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Evaluatable.h"
+#include <InteractiveScripting/ConnectionManager.h>
 #include "Number.generated.h"
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
@@ -18,4 +19,6 @@ protected:
 public:
 	virtual float Evaluate() { return NULL; };
 	
+	UFUNCTION(BlueprintCallable)
+		void SetAsNumValue(AConnectionManager* connectionManager);
 };
