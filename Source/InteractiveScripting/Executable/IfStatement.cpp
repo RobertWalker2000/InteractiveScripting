@@ -8,6 +8,12 @@ AIfStatement::AIfStatement()
 
 AExecutable::ExecuteResult AIfStatement::Execute()
 {
+	if (!condition->IsValidLowLevel())
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Invalid condition");
+		condition = nullptr;
+	}
+
 	if (condition == nullptr)
 		return MissingComponent;
 

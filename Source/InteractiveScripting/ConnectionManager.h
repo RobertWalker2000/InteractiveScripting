@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include <Components/Button.h>
 #include "ConnectionManager.generated.h"
 
 //Forward Declarations
@@ -44,6 +45,9 @@ protected:
 
 	ABoolean** boolSlot;
 
+	UButton* slotButton;
+	UButton* valueButton;
+
 public:	
 
 	//Reference clearers
@@ -75,4 +79,16 @@ public:
 
 	void TryBoolConnection();
 
+	//Visual Linking Functions
+	UFUNCTION(BlueprintCallable)
+		void AssignSlotButton(UButton* button);
+
+	UFUNCTION(BlueprintCallable)
+		void AssignValueButton(UButton* button);
+
+	UFUNCTION(BlueprintCallable)
+		bool IsSlotButton(UButton* button);
+
+	UFUNCTION(BlueprintCallable)
+		UButton* GetValueButton(UButton* button);
 };

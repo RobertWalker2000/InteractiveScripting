@@ -178,3 +178,41 @@ void AConnectionManager::HandleImproperPair()
 {
 	//TODO - Implement function
 }
+
+void AConnectionManager::AssignSlotButton(UButton* button)
+{
+	slotButton = button;
+}
+
+void AConnectionManager::AssignValueButton(UButton* button)
+{
+	valueButton = button;
+}
+
+bool AConnectionManager::IsSlotButton(UButton* button)
+{
+	if (slotButton == button)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+UButton* AConnectionManager::GetValueButton(UButton* button)
+{
+	if (valueButton == nullptr)
+	{
+		return button;
+	}
+	else
+	{
+		UButton* outputButton = valueButton;
+		valueButton = nullptr;
+		slotButton = nullptr;
+
+		return outputButton;
+	}
+}
