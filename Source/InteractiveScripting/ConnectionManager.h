@@ -91,4 +91,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 		UButton* GetValueButton(UButton* button);
+
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+		bool ShouldDrawLines = true;
+
 };
