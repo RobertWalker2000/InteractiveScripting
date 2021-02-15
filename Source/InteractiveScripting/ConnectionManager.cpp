@@ -176,7 +176,8 @@ void AConnectionManager::TryBoolConnection()
 
 void AConnectionManager::HandleImproperPair()
 {
-	//TODO - Implement function
+	slotButton = nullptr;
+	valueButton = nullptr;
 }
 
 void AConnectionManager::AssignSlotButton(UButton* button)
