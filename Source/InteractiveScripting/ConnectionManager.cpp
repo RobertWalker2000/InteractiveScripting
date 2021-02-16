@@ -4,8 +4,7 @@
 AConnectionManager::AConnectionManager()
 {
 	//Set this actor to never tick to imrpove performance
-	PrimaryActorTick.bCanEverTick = false;
-
+	PrimaryActorTick.bCanEverTick = true;
 }
 
 // Called when the game starts or when spawned
@@ -13,6 +12,21 @@ void AConnectionManager::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void AConnectionManager::Tick(float dt)
+{
+	Super::Tick(dt);
+
+	if (!areButtonsValid)
+	{
+		slotButton = nullptr;
+		valueButton = nullptr;
+		ClearValues();
+		ClearSlots();
+		areButtonsValid = true;
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Buttons weren't valid");
+	}
 }
 
 void AConnectionManager::ClearValues()
@@ -176,8 +190,7 @@ void AConnectionManager::TryBoolConnection()
 
 void AConnectionManager::HandleImproperPair()
 {
-	slotButton = nullptr;
-	valueButton = nullptr;
+	areButtonsValid = false;
 }
 
 void AConnectionManager::AssignSlotButton(UButton* button)
@@ -204,7 +217,7 @@ bool AConnectionManager::IsSlotButton(UButton* button)
 
 UButton* AConnectionManager::GetValueButton(UButton* button)
 {
-	if (valueButton == nullptr)
+	if (valueButton == nullptr || !areButtonsValid)
 	{
 		return button;
 	}

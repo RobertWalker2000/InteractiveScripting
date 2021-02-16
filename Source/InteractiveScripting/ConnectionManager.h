@@ -26,6 +26,7 @@ protected:
 	//Track if we have a slot/value assigned to catch improper pairings
 	bool hasValue = false;
 	bool hasSlot = false;
+	bool areButtonsValid = true;
 
 	void HandleImproperPair();
 
@@ -49,6 +50,8 @@ protected:
 	UButton* valueButton;
 
 public:	
+	//Needs to tick in order to validate buttons for visual connections
+	virtual void Tick(float dt) override;
 
 	//Reference clearers
 	void ClearValues();
