@@ -17,9 +17,8 @@ public:
 protected:
 	UVariableManager* varManager;
 	ABlockManager* blockManager;
-	bool HasVarType();
+	bool HasVarManager();
 	Variables varName;
-	FString nameString;
 
 public:
 	float Evaluate() override;

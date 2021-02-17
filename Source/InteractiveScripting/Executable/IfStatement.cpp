@@ -8,19 +8,27 @@ AIfStatement::AIfStatement()
 
 AExecutable::ExecuteResult AIfStatement::Execute()
 {
+	//Validate the connections to ensure we don't try to access invalid data if a connection is made and then deleted
 	if (!condition->IsValidLowLevel())
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Invalid condition");
 		condition = nullptr;
+		return MissingComponent;
 	}
 
-	if (condition == nullptr)
-		return MissingComponent;
+	if (!insideLine->IsValidLowLevel())
+	{
+		insideLine = nullptr;
+	}
+
+	if (!nextLine->IsValidLowLevel())
+	{
+		nextLine = nullptr;
+	}
 
 	AExecutable::ExecuteResult insideResult = EndReached;
 
 	//Check the condition and execute the conditional code only if it returns true
-	if (condition->Evaluate() == true && insideLine != NULL)
+	if (condition->Evaluate() == true && insideLine != nullptr)
 	{
 		insideResult = insideLine->Execute();
 	}
@@ -28,7 +36,7 @@ AExecutable::ExecuteResult AIfStatement::Execute()
 	//Check the result from the conditional code. If it is EndReached then either condition was false or conditional code executed succesfully
 	if (insideResult == EndReached)
 	{
-		if (nextLine == NULL)
+		if (nextLine == nullptr)
 			return EndReached;
 		else
 			return nextLine->Execute();

@@ -3,23 +3,7 @@
 
 AKeyPressed::AKeyPressed()
 {
-
-}
-
-bool AKeyPressed::GetController()
-{
-	//Dont need to find the controller if we already have it
-	if (controller)
-		return true;
-
-	//Try and get the player controller
-	controller = GetWorld()->GetFirstPlayerController();
-
-	//Return whether or not we managed to get the controller
-	if (controller)
-		return true;
-	else
-		return false;
+	
 }
 
 void AKeyPressed::SetKey(FString text)
@@ -29,7 +13,7 @@ void AKeyPressed::SetKey(FString text)
 
 bool AKeyPressed::Evaluate()
 {
-	if (GetController())	//Ensure we have a valid controller
+	if (HasController())	//Ensure we have a valid controller
 	{
 		if (key.IsValid())	//Ensure we have a valid key
 		{
@@ -38,5 +22,23 @@ bool AKeyPressed::Evaluate()
 	}
 
 	//If we cant get the controller or the key is invalid, return false
+	return false;
+}
+
+bool AKeyPressed::HasController()
+{
+	if (controller->IsValidLowLevel())
+	{
+		return true;
+	}
+	else
+	{
+		//Try and get the player controller
+		controller = GetWorld()->GetFirstPlayerController();
+
+		if (controller->IsValidLowLevel())
+			return true;
+	}
+
 	return false;
 }

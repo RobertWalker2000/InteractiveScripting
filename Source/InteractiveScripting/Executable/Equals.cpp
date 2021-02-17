@@ -28,18 +28,32 @@ void AEquals::SetRightSideAsSlot(AConnectionManager* connectionManager)
 
 AExecutable::ExecuteResult AEquals::Execute()
 {
-	//Check that everything is assigned
-	if (leftSide == nullptr || rightSide == nullptr)
-		return MissingComponent;
-	else if (leftSide->GetDataType() != rightSide->GetDataType())
-		return IncompatibleComponent;
+	//Ensure all connections are valid
+	if (!nextLine->IsValidLowLevel())
+	{
+		nextLine = nullptr;
+	}
 
-	//Check the data type so we know how to cast the values
-	if (leftSide->GetDataType() == DataType::NUMBER)
+	if (!leftSide->IsValidLowLevel())
+	{
+		leftSide = nullptr;
+	}
+
+	if (!rightSide->IsValidLowLevel())
+	{
+		rightSide = nullptr;
+	}
+
+	//Ensure we have values in both slots before summing them
+	if (leftSide != nullptr && rightSide != nullptr)
 	{
 		float value;
-		value = ((ANumber*)rightSide)->Evaluate();
-		((ANumVar*)leftSide)->SetValue(value);
+		value = rightSide->Evaluate();
+		leftSide->SetValue(value);
+	}
+	else
+	{
+		return MissingComponent;
 	}
 
 	if (nextLine == nullptr)

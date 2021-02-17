@@ -16,10 +16,7 @@ protected:
 	APlayerController* controller;
 	FKey key;
 
-	//Should be removable after UI linking
-	bool GetKey();
-
-	bool GetController();
+	bool HasController();
 public:
 	bool Evaluate() override;
 

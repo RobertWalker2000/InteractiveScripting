@@ -18,6 +18,12 @@ void AExecutable::BeginPlay()
 
 AExecutable::ExecuteResult AExecutable::Execute()
 {
+	//Ensure that next line isn't pointing to a piece of garbage data, which can happen if a connection is made and deleted
+	if (!nextLine->IsValidLowLevel())
+	{
+		nextLine = nullptr;
+	}
+
 	if (nextLine == nullptr)
 		return EndReached;	//There was no next line, return 0 to indicate succesful execution until the end was reached
 	else

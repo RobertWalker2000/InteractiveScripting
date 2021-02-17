@@ -9,7 +9,7 @@ ANumVar::ANumVar()
 
 float ANumVar::Evaluate()
 {
-	if (HasVarType())
+	if (HasVarManager())
 		return varManager->GetNumber(varName);
 	else
 		return NULL;
@@ -17,38 +17,36 @@ float ANumVar::Evaluate()
 
 void ANumVar::SetValue(float val)
 {
-	if (HasVarType())
+	if (HasVarManager())
 		varManager->SetNumber(varName, val);
 }
 
 void ANumVar::SetVariableName(FString nameIn)
 {
-	nameString = nameIn;
+	varName = UVariableManager::GetVarEnum(nameIn);
 }
 
-bool ANumVar::HasVarType()
+bool ANumVar::HasVarManager()
 {
-	//If we don't have a variable type, try to get one. Otherwise return true
-	if (varName == NoValue)
+	if (varManager->IsValidLowLevel())
+	{
+		return true;
+	}
+	else
 	{
 		AActor* owner = GetAttachParentActor();
 		if (owner->IsA<ABlockManager>())
 		{
 			blockManager = (ABlockManager*)owner;
 			varManager = blockManager->GetVarManager();
-			varName = UVariableManager::GetVarEnum(nameString);
 
 			//Check to ensure we found the variable manager
-			if (varName == NoValue)
-				return false;
-			else
+			if (varManager->IsValidLowLevel())
 				return true;
 		}
-		else
-			return false;	//If the owner is not a block manager,we can't proceed
 	}
-	else
-		return true;
+
+	return false;
 }
 
 void ANumVar::SetAsNumVarValue(AConnectionManager* connectionManager)
