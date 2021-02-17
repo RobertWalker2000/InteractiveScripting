@@ -3,7 +3,7 @@
 
 ABoolean::ABoolean()
 {
-	dataType = DataType::BOOLEAN;
+
 }
 
 void ABoolean::SetAsBooleanValue(AConnectionManager* connectionManager)

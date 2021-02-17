@@ -15,13 +15,3 @@ void AEvaluatable::BeginPlay()
 {
 	Super::BeginPlay();
 }
-
-DataType AEvaluatable::GetDataType()
-{
-	return dataType;
-}
-
-bool AEvaluatable::IsVariable()
-{
-	return isVariable;
-}

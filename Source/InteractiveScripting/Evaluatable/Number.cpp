@@ -3,7 +3,7 @@
 
 ANumber::ANumber()
 {
-	dataType = DataType::NUMBER;
+
 }
 
 void ANumber::SetAsNumValue(AConnectionManager* connectionManager)

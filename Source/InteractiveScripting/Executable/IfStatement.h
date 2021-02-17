@@ -21,14 +21,6 @@ protected:
 public:
 	ExecuteResult Execute() override;
 
-	//Used for old blueprint setting, should be deletable when UI linking is implemented
-	UFUNCTION(BlueprintCallable)
-		void SetCondition(ABoolean* cond);
-
-	//Used for old blueprint setting, should be deletable when UI linking is implemented
-	UFUNCTION(BlueprintCallable)
-		void SetInsideLine(AExecutable* inLine);
-
 	UFUNCTION(BlueprintCallable)
 		void SetConditionAsSlot(AConnectionManager* connectionManager);
 

@@ -48,16 +48,6 @@ AExecutable::ExecuteResult AIfStatement::Execute()
 
 }
 
-void AIfStatement::SetCondition(ABoolean* cond)
-{
-	condition = cond;
-}
-
-void AIfStatement::SetInsideLine(AExecutable* inLine)
-{
-	insideLine = inLine;
-}
-
 void AIfStatement::SetConditionAsSlot(AConnectionManager* connectionManager)
 {
 	connectionManager->AssignBooleanSlot(&condition);

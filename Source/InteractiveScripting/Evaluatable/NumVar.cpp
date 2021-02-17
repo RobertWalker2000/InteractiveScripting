@@ -3,7 +3,6 @@
 
 ANumVar::ANumVar()
 {
-	isVariable = true;
 	varName = NoValue;
 }
 

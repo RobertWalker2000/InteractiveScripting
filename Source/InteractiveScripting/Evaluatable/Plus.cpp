@@ -3,17 +3,7 @@
 
 APlus::APlus()
 {
-	isVariable = false;
-}
 
-void APlus::SetLeft(ANumber* left)
-{
-	leftSide = left;
-}
-
-void APlus::SetRight(ANumber* right)
-{
-	rightSide = right;
 }
 
 void APlus::SetLeftSideAsSlot(AConnectionManager* connectionManager)

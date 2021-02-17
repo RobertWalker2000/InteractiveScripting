@@ -18,12 +18,6 @@ protected:
 	ANumber* rightSide;
 
 public:
-	//Should be removed after UI linking
-	UFUNCTION(BlueprintCallable)
-		void SetLeft(ANumVar* left);
-	//Remove after UI linking
-	UFUNCTION(BlueprintCallable)
-		void SetRight(ANumber* right);
 
 	UFUNCTION(BlueprintCallable)
 		void SetLeftSideAsSlot(AConnectionManager* connectionManager);

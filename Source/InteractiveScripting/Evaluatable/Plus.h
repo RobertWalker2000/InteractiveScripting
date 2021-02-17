@@ -20,11 +20,6 @@ public:
 	float Evaluate() override;
 
 	UFUNCTION(BlueprintCallable)
-		void SetLeft(ANumber* left);
-	UFUNCTION(BlueprintCallable)
-		void SetRight(ANumber* right);
-
-	UFUNCTION(BlueprintCallable)
 		void SetLeftSideAsSlot(AConnectionManager* connectionManager);
 
 	UFUNCTION(BlueprintCallable)

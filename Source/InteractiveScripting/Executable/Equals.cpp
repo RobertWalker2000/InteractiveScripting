@@ -6,16 +6,6 @@ AEquals::AEquals()
 
 }
 
-void AEquals::SetLeft(ANumVar* left)
-{
-	leftSide = left;
-}
-
-void AEquals::SetRight(ANumber* right)
-{
-	rightSide = right;
-}
-
 void AEquals::SetLeftSideAsSlot(AConnectionManager* connectionManager)
 {
 	connectionManager->AssignNumVarSlot(&leftSide);

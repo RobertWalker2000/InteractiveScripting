@@ -30,11 +30,6 @@ AExecutable::ExecuteResult AExecutable::Execute()
 		return nextLine->Execute();
 }
 
-void AExecutable::SetNextLine(AExecutable* next)
-{
-	nextLine = next;
-}
-
 void AExecutable::SetAsExeValue(AConnectionManager* connectionManager)
 {
 	connectionManager->AssignExecutableValue(this);
