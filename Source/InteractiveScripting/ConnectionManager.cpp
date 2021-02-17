@@ -234,3 +234,13 @@ UButton* AConnectionManager::GetValueButton(UButton* button)
 		return outputButton;
 	}
 }
+
+UButton* AConnectionManager::GetActiveButton()
+{
+	if (slotButton != nullptr)
+		return slotButton;
+	else if (valueButton != nullptr)
+		return valueButton;
+	else
+		return nullptr;
+}
