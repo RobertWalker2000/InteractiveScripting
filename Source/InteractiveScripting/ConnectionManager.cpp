@@ -65,6 +65,7 @@ void AConnectionManager::AssignExecutableSlot(AExecutable** exeSlotIn)
 {
 	ClearSlots();
 	exeSlot = exeSlotIn;
+	*exeSlot = nullptr;
 	hasSlot = true;
 	TryExecutableConnection();
 }
@@ -113,6 +114,7 @@ void AConnectionManager::AssignNumSlot(ANumber** numSlotIn)
 {
 	ClearSlots();
 	numSlot = numSlotIn;
+	*numSlot = nullptr;
 	hasSlot = true;
 	TryNumConnection();
 }
@@ -121,6 +123,7 @@ void AConnectionManager::AssignNumVarSlot(ANumVar** numVarSlotIn)
 {
 	ClearSlots();
 	numVarSlot = numVarSlotIn;
+	*numVarSlot = nullptr;
 	hasSlot = true;
 	TryNumConnection();
 }
@@ -163,6 +166,7 @@ void AConnectionManager::AssignBooleanSlot(ABoolean** boolSlotIn)
 {
 	ClearSlots();
 	boolSlot = boolSlotIn;
+	*boolSlot = nullptr;
 	hasSlot = true;
 	TryBoolConnection();
 }
