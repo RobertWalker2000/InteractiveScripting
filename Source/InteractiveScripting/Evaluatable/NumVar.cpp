@@ -3,7 +3,7 @@
 
 ANumVar::ANumVar()
 {
-	varName = NoValue;
+	varName = PositionX;
 }
 
 float ANumVar::Evaluate()
