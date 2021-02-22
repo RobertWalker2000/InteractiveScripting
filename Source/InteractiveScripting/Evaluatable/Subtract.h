@@ -2,15 +2,15 @@
 #pragma once
 #include "CoreMinimal.h"
 #include <InteractiveScripting/Evaluatable/MathOperation.h>
-#include "Plus.generated.h"
+#include "Subtract.generated.h"
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
-class INTERACTIVESCRIPTING_API APlus : public AMathOperation
+UCLASS()
+class INTERACTIVESCRIPTING_API ASubtract : public AMathOperation
 {
 	GENERATED_BODY()
-
+	
 public:
-	APlus();
+	ASubtract();
 
 	float Evaluate() override;
 

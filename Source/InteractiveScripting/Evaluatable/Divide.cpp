@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-#include "Plus.h"
+#include "Divide.h"
 
-APlus::APlus()
+ADivide::ADivide()
 {
 
 }
 
-float APlus::Evaluate()
+float ADivide::Evaluate()
 {
 	if (!leftSide->IsValidLowLevel())
 	{
@@ -25,7 +25,7 @@ float APlus::Evaluate()
 	else
 	{
 		float value;
-		value = leftSide->Evaluate() + rightSide->Evaluate();
+		value = leftSide->Evaluate() / rightSide->Evaluate();
 		return value;
 	}
 }
