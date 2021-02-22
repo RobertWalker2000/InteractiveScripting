@@ -11,7 +11,7 @@ bool ADeltaTime::HasVarManager()
 	else
 	{
 		varManager = nullptr;
-		AActor* owner = GetOwner();
+		AActor* owner = GetAttachParentActor();
 		if (owner->IsA<ABlockManager>())
 		{
 			ABlockManager* blockManager = (ABlockManager*)owner;
