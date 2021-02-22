@@ -4,11 +4,8 @@
 // Sets default values for this component's properties
 UVariableManager::UVariableManager()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
+	//Need to tick so we can update delta time
 	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
 
 
@@ -21,9 +18,11 @@ void UVariableManager::BeginPlay()
 
 
 // Called every frame
-void UVariableManager::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UVariableManager::TickComponent(float dt, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	Super::TickComponent(dt, TickType, ThisTickFunction);
+
+	deltaTime = dt;
 }
 
 float UVariableManager::GetNumber(Variables varName)
@@ -34,6 +33,8 @@ float UVariableManager::GetNumber(Variables varName)
 		return player->GetActorTransform().GetTranslation().X;
 	case PositionY:
 		return player->GetActorTransform().GetTranslation().Y;
+	case DeltaTime:
+		return deltaTime;
 	default:
 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "NumVar has no assigned variable");
 		return NULL;

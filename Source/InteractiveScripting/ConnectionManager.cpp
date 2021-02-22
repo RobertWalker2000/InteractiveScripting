@@ -3,7 +3,7 @@
 // Sets default values
 AConnectionManager::AConnectionManager()
 {
-	//Set this actor to never tick to imrpove performance
+	//Need to tick to clean up invalid buttons
 	PrimaryActorTick.bCanEverTick = true;
 }
 
