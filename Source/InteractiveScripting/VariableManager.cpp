@@ -36,10 +36,12 @@ float UVariableManager::GetNumber(Variables varName)
 		return player->GetActorTransform().GetTranslation().X;
 	case PositionY:
 		return player->GetActorTransform().GetTranslation().Y;
+	case Rotation:
+		return player->GetActorTransform().GetRotation().Euler().Z;
 	case DeltaTime:
 		return deltaTime;
 	default:
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "NumVar has no assigned variable");
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "Invalid variable name (Can't Get)");
 		return NULL;
 	}
 }
@@ -66,8 +68,19 @@ void UVariableManager::SetNumber(Variables varName, float newVal)
 		player->SetActorTransform(playerTrans);
 		return;
 	}
+	case Rotation:
+	{
+		FTransform playerTrans = player->GetActorTransform();
+		FQuat playerRotation = playerTrans.GetRotation();
+		FVector eulerRotation = playerRotation.Euler();
+		eulerRotation = FVector(eulerRotation.X, eulerRotation.Y, newVal);
+		playerRotation = FQuat::MakeFromEuler(eulerRotation);
+		playerTrans.SetRotation(playerRotation);
+		player->SetActorTransform(playerTrans);
+		return;
+	}
 	default:
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "NumVar has no assigned variable");
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, "Invalid Variable name (Can't Set)");
 		return;
 	}
 }
@@ -78,6 +91,8 @@ Variables UVariableManager::GetVarEnum(FString varName)
 		return PositionX;
 	else if (varName == "PositionY")
 		return PositionY;
+	else if (varName == "Rotation")
+		return Rotation;
 	else
 		return NoValue;
 }

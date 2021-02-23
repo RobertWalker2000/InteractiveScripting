@@ -4,7 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "VariableManager.generated.h"
 
-static enum Variables {NoValue = 0, PositionX = 1, PositionY = 2, DeltaTime = 3};
+static enum Variables {NoValue = 0, PositionX = 1, PositionY = 2, Rotation = 3, DeltaTime = 4};
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INTERACTIVESCRIPTING_API UVariableManager : public UActorComponent
