@@ -29,7 +29,7 @@ public:
 	//Variable Managers
 	//Some variables may be read only in the context of scripting, and so may only have a getter
 	float GetNumber(Variables varName);
-	void SetNumber(Variables varName, float newXPos);
+	void SetNumber(Variables varName, float newVal);
 
 	static Variables GetVarEnum(FString varName);
 };

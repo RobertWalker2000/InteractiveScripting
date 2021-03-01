@@ -16,7 +16,6 @@ public:
 
 protected:
 	UVariableManager* varManager;
-	ABlockManager* blockManager;
 	bool HasVarManager();
 	Variables varName;
 

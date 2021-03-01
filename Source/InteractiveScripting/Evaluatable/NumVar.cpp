@@ -36,7 +36,7 @@ bool ANumVar::HasVarManager()
 		AActor* owner = GetAttachParentActor();
 		if (owner->IsA<ABlockManager>())
 		{
-			blockManager = (ABlockManager*)owner;
+			ABlockManager* blockManager = (ABlockManager*)owner;
 			varManager = blockManager->GetVarManager();
 
 			//Check to ensure we found the variable manager
