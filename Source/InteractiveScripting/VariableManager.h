@@ -4,7 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "VariableManager.generated.h"
 
-static enum Variables {NoValue = 0, PositionX = 1, PositionY = 2, Rotation = 3, DeltaTime = 4};
+static enum Variables {NoValue, PositionX, PositionY, Rotation, ShootTimer, DeltaTime};
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INTERACTIVESCRIPTING_API UVariableManager : public UActorComponent
@@ -22,6 +22,7 @@ protected:
 	AActor* player;
 
 	float deltaTime = 0.0f;
+	float shootTimer = 0.0f;
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

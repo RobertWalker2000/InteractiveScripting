@@ -18,6 +18,7 @@ protected:
 	UVariableManager* varManager;
 
 	float positionX = 0, positionY = 0, rotation = 0, speed = 0;
+	const float maxTimer = 3.0f;
 
 	bool HasVarManager();
 public:

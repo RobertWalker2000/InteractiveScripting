@@ -15,30 +15,38 @@ AExecutable::ExecuteResult AShoot::Execute()
 		nextLine = nullptr;
 	}
 
+	//Get all the necessary variables. These will be replaced by inputs after testing
 	if (HasVarManager())
 	{
-		positionX = varManager->GetNumber(Variables::PositionX);
-		positionY = varManager->GetNumber(Variables::PositionY);
-		rotation = varManager->GetNumber(Variables::Rotation);
-		speed = 60.0f;
+		//Use a timer in varManager to prevent multiple shots being fired too quickly, regardless of the number of Shoot blocks in use
+		if (varManager->GetNumber(Variables::ShootTimer) <= 0.0f)
+		{
+			positionX = varManager->GetNumber(Variables::PositionX);
+			positionY = varManager->GetNumber(Variables::PositionY);
+			rotation = varManager->GetNumber(Variables::Rotation);
+			speed = 60.0f;
+
+			FTransform spawnTransform = FTransform::Identity;
+
+			FVector position = FVector(positionX, positionY, 70.0f);
+
+			//Create a vector representing the forward vector of the player based on the inputs
+			FVector direction = FVector::ForwardVector;
+			direction = direction.RotateAngleAxis(rotation, FVector::UpVector);
+			direction.Normalize();
+
+			//Move the spawn position along the forward vector a small amount to ensure it is outside the player
+			position += (direction * 100.0f);
+			spawnTransform.SetTranslation(position);
+
+			FVector ballVel = direction * 600.0f;
+			AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(AProjectile::StaticClass(), spawnTransform);
+			projectile->ballMesh->AddImpulse(ballVel, FName(), true);
+
+			//Reset the timer after shooting
+			varManager->SetNumber(Variables::ShootTimer, maxTimer);
+		}
 	}
-
-	FTransform spawnTransform = FTransform::Identity;
-
-	FVector position = FVector(positionX, positionY, 70.0f);
-
-	//Create a vector representing the forward vector of the player based on the inputs
-	FVector direction = FVector::RightVector;
-	direction = direction.RotateAngleAxis(rotation, FVector::UpVector);
-	direction.Normalize();
-
-	//Move the spawn position along the forward vector a small amount to ensure it is outside the player
-	position += (direction * 60.0f);
-	spawnTransform.SetTranslation(position);
-
-	FVector ballVel = direction * 60.0f;
-	AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(AProjectile::StaticClass(), spawnTransform);
-	projectile->ballMesh->AddImpulse(ballVel, FName(), true);
 
 	if (nextLine == nullptr)
 		return EndReached;

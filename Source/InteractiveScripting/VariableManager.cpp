@@ -23,6 +23,7 @@ void UVariableManager::TickComponent(float dt, ELevelTick TickType, FActorCompon
 	Super::TickComponent(dt, TickType, ThisTickFunction);
 
 	deltaTime = dt;
+	shootTimer -= dt;
 	FString string = "Delta Time: ";
 	string.Append(FString::SanitizeFloat(dt));
 	GEngine->AddOnScreenDebugMessage(-1, 0.0f, FColor::Red, string);
@@ -38,6 +39,8 @@ float UVariableManager::GetNumber(Variables varName)
 		return player->GetActorTransform().GetTranslation().Y;
 	case Rotation:
 		return player->GetActorTransform().GetRotation().Euler().Z;
+	case ShootTimer:
+		return shootTimer;
 	case DeltaTime:
 		return deltaTime;
 	default:
@@ -77,6 +80,11 @@ void UVariableManager::SetNumber(Variables varName, float newVal)
 		playerRotation = FQuat::MakeFromEuler(eulerRotation);
 		playerTrans.SetRotation(playerRotation);
 		player->SetActorTransform(playerTrans);
+		return;
+	}
+	case ShootTimer:
+	{
+		shootTimer = newVal;
 		return;
 	}
 	default:
