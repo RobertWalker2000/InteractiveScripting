@@ -1,4 +1,9 @@
 #include "ConnectionManager.h"
+#include "Executable/Executable.h"
+#include "Evaluatable/Number.h"
+#include "Evaluatable/NumVar.h"
+#include "Evaluatable/Boolean.h"
+#include "Evaluatable/Vector2.h"
 
 // Sets default values
 AConnectionManager::AConnectionManager()
@@ -39,6 +44,8 @@ void AConnectionManager::ClearValues()
 	numVarValue = nullptr;
 
 	boolValue = nullptr;
+
+	vectorValue = nullptr;
 }
 
 void AConnectionManager::ClearSlots()
@@ -51,6 +58,8 @@ void AConnectionManager::ClearSlots()
 	numVarSlot = nullptr;
 
 	boolSlot = nullptr;
+
+	vectorSlot = nullptr;
 }
 
 void AConnectionManager::AssignExecutableValue(AExecutable* exeValueIn)
@@ -63,10 +72,10 @@ void AConnectionManager::AssignExecutableValue(AExecutable* exeValueIn)
 
 void AConnectionManager::AssignExecutableSlot(AExecutable** exeSlotIn)
 {
-	ClearSlots();
-	exeSlot = exeSlotIn;
-	*exeSlot = nullptr;
-	hasSlot = true;
+	ClearSlots();			//Clear slots to ensure the only available slot is the current executable
+	exeSlot = exeSlotIn;	//Assign the executable slot passed in as the stored value
+	*exeSlot = nullptr;		//Using the new slot pointer, clear the slot so it no longer has a connection
+	hasSlot = true;			//Flag that we have a slot available for when connections are checked
 	TryExecutableConnection();
 }
 
@@ -84,8 +93,6 @@ void AConnectionManager::TryExecutableConnection()
 		{
 			//If we reach here we have an improper pairing. This should be expressed to the player
 			HandleImproperPair();
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Executable Connection Failed");
-
 		}
 		ClearValues();
 		ClearSlots();
@@ -146,7 +153,6 @@ void AConnectionManager::TryNumConnection()
 		{
 			//Invalid connection
 			HandleImproperPair();
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Number Connection Failed");
 		}
 
 		ClearValues();
@@ -184,7 +190,42 @@ void AConnectionManager::TryBoolConnection()
 		{
 			//Invalid pairing
 			HandleImproperPair();
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Boolean Connection Failed");
+		}
+
+		ClearValues();
+		ClearSlots();
+	}
+}
+
+void AConnectionManager::AssignVectorVal(AVector2* vectorValueIn)
+{
+	ClearValues();
+	vectorValue = vectorValueIn;
+	hasValue = true;
+	TryVectorConnection();
+}
+
+void AConnectionManager::AssignVectorSlot(AVector2** vectorSlotIn)
+{
+	ClearSlots();
+	vectorSlot = vectorSlotIn;
+	*vectorSlot = nullptr;
+	hasSlot = true;
+	TryVectorConnection();
+}
+
+void AConnectionManager::TryVectorConnection()
+{
+	if (hasValue && hasSlot)
+	{
+		if (vectorValue != nullptr && vectorSlot != nullptr)
+		{
+			*vectorSlot = vectorValue;
+		}
+		else
+		{
+			//Invalid pairing
+			HandleImproperPair();
 		}
 
 		ClearValues();
@@ -194,6 +235,7 @@ void AConnectionManager::TryBoolConnection()
 
 void AConnectionManager::HandleImproperPair()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Connection Failed");
 	areButtonsValid = false;
 }
 

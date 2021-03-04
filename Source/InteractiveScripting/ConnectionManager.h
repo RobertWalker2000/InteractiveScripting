@@ -9,6 +9,7 @@ class AExecutable;
 class ANumber;
 class ANumVar;
 class ABoolean;
+class AVector2;
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class INTERACTIVESCRIPTING_API AConnectionManager : public AActor
@@ -38,6 +39,8 @@ protected:
 
 	ABoolean* boolValue;
 
+	AVector2* vectorValue;
+
 	//Input Slots
 	AExecutable** exeSlot;
 
@@ -45,6 +48,8 @@ protected:
 	ANumVar** numVarSlot;
 
 	ABoolean** boolSlot;
+
+	AVector2** vectorSlot;
 
 	UButton* slotButton;
 	UButton* valueButton;
@@ -81,6 +86,13 @@ public:
 	void AssignBooleanSlot(ABoolean** boolSlotIn);
 
 	void TryBoolConnection();
+
+	//Vector connections
+	void AssignVectorVal(AVector2* vectorValIn);
+
+	void AssignVectorSlot(AVector2** vectorSlotIn);
+
+	void TryVectorConnection();
 
 	//Visual Linking Functions
 	UFUNCTION(BlueprintCallable)
