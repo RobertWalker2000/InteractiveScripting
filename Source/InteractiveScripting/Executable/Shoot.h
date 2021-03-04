@@ -2,9 +2,12 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Executable.h"
-#include "InteractiveScripting/VariableManager.h"
-#include "InteractiveScripting/Projectile.h"
 #include "Shoot.generated.h"
+
+//Forward Declaration
+class UVariableManager;
+class ANumber;
+class AVector2;
 
 UCLASS()
 class INTERACTIVESCRIPTING_API AShoot : public AExecutable
@@ -17,10 +20,22 @@ public:
 protected:
 	UVariableManager* varManager;
 
-	float positionX = 0, positionY = 0, rotation = 0, speed = 0;
+	AVector2* vectorIn;
+	ANumber* rotationIn;
+
+	const float speed = 600.0f;
 	const float maxTimer = 3.0f;
+
+	const float spawnHeight = 70.0f;	//The height to spawn the ball at, set the to same as the player's height
+	const float offsetDist = 100.0f;	//How far to move the ball before spawning it in, to prevent it spawning inside the player
 
 	bool HasVarManager();
 public:
 	ExecuteResult Execute() override;
+
+	UFUNCTION(BlueprintCallable)
+		void SetVectorAsSlot(AConnectionManager* connectionmanager);
+
+	UFUNCTION(BlueprintCallable)
+		void SetRotationAsSlot(AConnectionManager* connectionManager);
 };
