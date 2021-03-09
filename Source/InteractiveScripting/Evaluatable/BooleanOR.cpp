@@ -15,5 +15,5 @@ bool ABooleanOR::Evaluate()
 	if (input1 == nullptr || input2 == nullptr)
 		return false;
 	else
-		return (input1 || input2);
+		return (input1->Evaluate() || input2->Evaluate());
 }
