@@ -48,6 +48,45 @@ AExecutable::ExecuteResult AIfStatement::Execute()
 
 }
 
+bool AIfStatement::TestForLoop()
+{
+	if (hasBeenTested)
+	{
+		hasBeenTested = false;
+		return true;
+	}
+
+	//Set has been tested to true before we do any tests with the other lines
+	hasBeenTested = true;
+
+	if (insideLine->IsValidLowLevel())
+	{
+		bool insideResult = insideLine->TestForLoop();
+
+		if (insideResult == true)	//If the inside line leads to an infinite loop
+		{
+			hasBeenTested = false;
+			return true;
+		}
+	}
+
+	//If we reached here, we haven't been tested before and we didn't find a loop through the inside line
+	if (nextLine->IsValidLowLevel())
+	{
+		bool finalResult = nextLine->TestForLoop();
+
+		//Finished testing, reset to untested and return the final result
+		hasBeenTested = false;
+		return finalResult;
+	}
+	else
+	{
+		//We reached the end, we aren't in a loop
+		hasBeenTested = false;
+		return false;
+	}
+}
+
 void AIfStatement::SetConditionAsSlot(AConnectionManager* connectionManager)
 {
 	connectionManager->AssignBooleanSlot(&condition);

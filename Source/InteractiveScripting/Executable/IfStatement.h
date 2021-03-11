@@ -21,6 +21,8 @@ protected:
 public:
 	ExecuteResult Execute() override;
 
+	bool TestForLoop() override;
+
 	UFUNCTION(BlueprintCallable)
 		void SetConditionAsSlot(AConnectionManager* connectionManager);
 

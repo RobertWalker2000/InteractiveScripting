@@ -30,6 +30,33 @@ AExecutable::ExecuteResult AExecutable::Execute()
 		return nextLine->Execute();
 }
 
+bool AExecutable::TestForLoop()
+{
+	//We've been here before, we are in a loop
+	//Reset to be untested so we can test again on another connection later
+	if (hasBeenTested)
+	{
+		hasBeenTested = false;
+		return true;
+	}
+
+	//We reached the end, we aren't in a lopp
+	if (!nextLine->IsValidLowLevel())
+	{
+		nextLine = nullptr;
+		return false;
+	}
+
+	//Neither of the other checks returned a value, continue down the line
+	hasBeenTested = true;
+	bool finalResult = nextLine->TestForLoop();
+
+	//We are returning back up the line, rest to be untested and return the final result
+	hasBeenTested = false;
+	return finalResult;
+
+}
+
 void AExecutable::SetAsExeValue(AConnectionManager* connectionManager)
 {
 	connectionManager->AssignExecutableValue(this);

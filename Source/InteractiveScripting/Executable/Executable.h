@@ -19,7 +19,7 @@ protected:
 	virtual void BeginPlay() override;
 	AExecutable* nextLine;
 
-
+	bool hasBeenTested = false;
 public:	
 	static enum ExecuteResult
 	{
@@ -29,6 +29,8 @@ public:
 	};
 
 	virtual ExecuteResult Execute();
+
+	virtual bool TestForLoop();
 		
 	UFUNCTION(BlueprintCallable)
 		void SetAsExeValue(AConnectionManager* connectionManager);

@@ -88,6 +88,13 @@ void AConnectionManager::TryExecutableConnection()
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Executable Connection Made");
 			*exeSlot = exeValue;
+
+			if (exeValue->TestForLoop())
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Infinite Loop Detected, Connection Broken");
+				*exeSlot = nullptr;
+				HandleImproperPair();
+			}
 		}
 		else
 		{
