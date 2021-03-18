@@ -30,7 +30,6 @@ void AConnectionManager::Tick(float dt)
 		ClearValues();
 		ClearSlots();
 		areButtonsValid = true;
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Buttons weren't valid");
 	}
 }
 
@@ -86,7 +85,6 @@ void AConnectionManager::TryExecutableConnection()
 		//If we have a compatible slot and value, connect the 2
 		if ((exeSlot != nullptr) && (exeValue != nullptr))
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Executable Connection Made");
 			*exeSlot = exeValue;
 
 			if (exeValue->TestForLoop())
@@ -148,12 +146,10 @@ void AConnectionManager::TryNumConnection()
 	{
 		if (numSlot != nullptr && numValue != nullptr)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Number Connection Made");
 			*numSlot = numValue;
 		}
 		else if (numVarValue != nullptr && numVarSlot != nullptr)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "NumVar Connection Made");
 			*numVarSlot = numVarValue;
 		}
 		else
@@ -191,7 +187,6 @@ void AConnectionManager::TryBoolConnection()
 		if (boolValue != nullptr && boolSlot != nullptr)
 		{
 			*boolSlot = boolValue;
-			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Boolean Connection Made");
 		}
 		else
 		{

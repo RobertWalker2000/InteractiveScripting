@@ -24,9 +24,6 @@ void UVariableManager::TickComponent(float dt, ELevelTick TickType, FActorCompon
 
 	deltaTime = dt;
 	shootTimer -= dt;
-	FString string = "Delta Time: ";
-	string.Append(FString::SanitizeFloat(dt));
-	GEngine->AddOnScreenDebugMessage(-1, 0.0f, FColor::Red, string);
 }
 
 float UVariableManager::GetNumber(Variables varName)
