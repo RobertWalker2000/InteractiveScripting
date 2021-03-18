@@ -20,14 +20,19 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (firstLine != nullptr)
+	if (isPlaying)
 	{
-		result = firstLine->Execute();
-
-		if (result != AExecutable::ExecuteResult::EndReached)
+		if (firstLine != nullptr)
 		{
-			if(result == AExecutable::ExecuteResult::MissingComponent)
-				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Missing a component");
+			result = firstLine->Execute();
+
+			if (result != AExecutable::ExecuteResult::EndReached)
+			{
+				if (result == AExecutable::ExecuteResult::MissingComponent)
+					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Missing a component");
+
+				isPlaying = false;
+			}
 		}
 	}
 }

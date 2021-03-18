@@ -28,4 +28,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void SetFirstLine(AExecutable* first);
 
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere)
+		bool isPlaying = false;
+
 };
