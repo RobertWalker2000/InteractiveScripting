@@ -23,10 +23,10 @@ protected:
 	AVector2* vectorIn;
 	ANumber* rotationIn;
 
-	const float speed = 600.0f;
+	const float speed = 1000.0f;
 	const float maxTimer = 3.0f;
 
-	const float spawnHeight = 70.0f;	//The height to spawn the ball at, set the to same as the player's height
+	const float spawnHeight = 50.0f;	//The height to spawn the ball at, set the to same as the player's height
 	const float offsetDist = 100.0f;	//How far to move the ball before spawning it in, to prevent it spawning inside the player
 
 	bool HasVarManager();
