@@ -25,12 +25,17 @@ void AConnectionManager::Tick(float dt)
 
 	if (!areButtonsValid)
 	{
-		slotButton = nullptr;
-		valueButton = nullptr;
-		ClearValues();
-		ClearSlots();
+		ClearEverything();
 		areButtonsValid = true;
 	}
+}
+
+void AConnectionManager::ClearEverything()
+{
+	slotButton = nullptr;
+	valueButton = nullptr;
+	ClearValues();
+	ClearSlots();
 }
 
 void AConnectionManager::ClearValues()

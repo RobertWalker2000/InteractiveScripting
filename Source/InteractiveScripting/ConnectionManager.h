@@ -59,6 +59,8 @@ public:
 	virtual void Tick(float dt) override;
 
 	//Reference clearers
+	UFUNCTION(BlueprintCallable)
+	void ClearEverything();
 	void ClearValues();
 	void ClearSlots();
 
