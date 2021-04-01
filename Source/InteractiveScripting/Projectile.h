@@ -4,6 +4,9 @@
 #include "GameFramework/Actor.h"
 #include "Projectile.generated.h"
 
+class USoundCue;
+class UAudioComponent;
+
 UCLASS()
 class INTERACTIVESCRIPTING_API AProjectile : public AActor
 {
@@ -17,6 +20,10 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	//Used to play audio cue when projectile is spawned
+	USoundCue* soundCue;
+	UAudioComponent* audioComponent;
 
 public:	
 	// Called every frame
