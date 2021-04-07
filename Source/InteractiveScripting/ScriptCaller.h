@@ -21,9 +21,14 @@ protected:
 	AExecutable* firstLine;
 	AExecutable::ExecuteResult result;
 
+	bool missingComponent = false;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	UFUNCTION(BlueprintCallable)
+		bool WasComponentMissing();
 
 	UFUNCTION(BlueprintCallable)
 		void SetFirstLine(AExecutable* first);

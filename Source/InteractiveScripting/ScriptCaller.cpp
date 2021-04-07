@@ -28,8 +28,7 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 			if (result != AExecutable::ExecuteResult::EndReached)
 			{
-				if (result == AExecutable::ExecuteResult::MissingComponent)
-					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, "Missing a component");
+				missingComponent = true;
 
 				isPlaying = false;
 			}
@@ -40,4 +39,12 @@ void UScriptCaller::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 void UScriptCaller::SetFirstLine(AExecutable* first)
 {
 	firstLine = first;
+}
+
+//Returns whether or not a missing component was detected, then sets the value to falseso it only returns true once per missing component
+bool UScriptCaller::WasComponentMissing()
+{
+	bool tempResult = missingComponent;
+	missingComponent = false;
+	return tempResult;
 }
